@@ -15,7 +15,8 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        self.fromInput.clearsOnBeginEditing = true
+        self.toInput.clearsOnBeginEditing = true
     }
 
     @IBAction func calculate(_ sender: UIButton) {
