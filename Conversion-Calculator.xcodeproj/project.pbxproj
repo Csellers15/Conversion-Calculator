@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		303A5076233535E90044665A /* DecimalMinusTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 303A5075233535E90044665A /* DecimalMinusTextField.swift */; };
 		303DB9772335349B000B7EE4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 303DB9762335349B000B7EE4 /* AppDelegate.swift */; };
 		303DB9792335349B000B7EE4 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 303DB9782335349B000B7EE4 /* ViewController.swift */; };
 		303DB97C2335349B000B7EE4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 303DB97A2335349B000B7EE4 /* Main.storyboard */; };
@@ -34,6 +35,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		303A5075233535E90044665A /* DecimalMinusTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DecimalMinusTextField.swift; sourceTree = "<group>"; };
 		303DB9732335349B000B7EE4 /* Conversion-Calculator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Conversion-Calculator.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		303DB9762335349B000B7EE4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		303DB9782335349B000B7EE4 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -101,6 +103,7 @@
 				303DB9782335349B000B7EE4 /* ViewController.swift */,
 				303DB97A2335349B000B7EE4 /* Main.storyboard */,
 				303DB97D2335349C000B7EE4 /* Assets.xcassets */,
+				303A5075233535E90044665A /* DecimalMinusTextField.swift */,
 				303DB97F2335349C000B7EE4 /* LaunchScreen.storyboard */,
 				303DB9822335349C000B7EE4 /* Info.plist */,
 			);
@@ -256,6 +259,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				303A5076233535E90044665A /* DecimalMinusTextField.swift in Sources */,
 				303DB9792335349B000B7EE4 /* ViewController.swift in Sources */,
 				303DB9772335349B000B7EE4 /* AppDelegate.swift in Sources */,
 			);
