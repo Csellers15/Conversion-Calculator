@@ -13,10 +13,18 @@ class ViewController: UIViewController {
     @IBOutlet weak var fromInput: DecimalMinusTextField!
     @IBOutlet weak var toInput: DecimalMinusTextField!
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action:  #selector(UIInputViewController.dismissKeyboard))
+        view.addGestureRecognizer(tap)
+        
         self.fromInput.clearsOnBeginEditing = true
         self.toInput.clearsOnBeginEditing = true
+    }
+    
+    @objc func dismissKeyboard() {
+         view.endEditing(true)
     }
     
     @IBAction func calculate(_ sender: UIButton) {
@@ -44,5 +52,6 @@ class ViewController: UIViewController {
         self.fromInput.text = ""
         self.toInput.text = ""
     }
+    
 }
 
