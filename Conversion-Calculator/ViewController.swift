@@ -13,6 +13,12 @@ class ViewController: UIViewController {
     @IBOutlet weak var fromInput: DecimalMinusTextField!
     @IBOutlet weak var toInput: DecimalMinusTextField!
     
+    var fromLength = LengthUnit.Meters
+    var toLength = LengthUnit.Miles
+    
+    var fromVol = VolumeUnit.Liters
+    var toVol = VolumeUnit.Gallons
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,16 +35,9 @@ class ViewController: UIViewController {
     }
     
     @IBAction func calculate(_ sender: UIButton) {
-        if(self.fromInput.text! != ""){
-            let value = Double(self.fromInput.text!)
-            self.toInput.text = String(0.9144 / value!)
-        } else if(self.toInput.text! != ""){
-            let value = Double(self.toInput.text!)
-            self.fromInput.text = String (value! * 1.0936)
-        } else {
-            self.fromInput.text = String(0)
-            self.toInput.text = String(0)
-        }
+        let fromVal = Double(self.fromInput.text!)
+        let convKey = LengthConversionKey(toUnits: toLength, fromUnits: fromLength)
+        let toVal = fromVal! * lengthConversionTable[convKey]!
     }
     
     @IBAction func fromBeganEditing(_ sender: Any) {
