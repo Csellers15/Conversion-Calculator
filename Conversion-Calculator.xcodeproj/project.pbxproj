@@ -15,6 +15,7 @@
 		303DB9812335349C000B7EE4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 303DB97F2335349C000B7EE4 /* LaunchScreen.storyboard */; };
 		303DB98C2335349D000B7EE4 /* Conversion_CalculatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 303DB98B2335349D000B7EE4 /* Conversion_CalculatorTests.swift */; };
 		303DB9972335349D000B7EE4 /* Conversion_CalculatorUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 303DB9962335349D000B7EE4 /* Conversion_CalculatorUITests.swift */; };
+		308C981323392A2B00E88E17 /* UnitsAndModes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 308C981223392A2B00E88E17 /* UnitsAndModes.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +50,7 @@
 		303DB9922335349D000B7EE4 /* Conversion-CalculatorUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Conversion-CalculatorUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		303DB9962335349D000B7EE4 /* Conversion_CalculatorUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Conversion_CalculatorUITests.swift; sourceTree = "<group>"; };
 		303DB9982335349D000B7EE4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		308C981223392A2B00E88E17 /* UnitsAndModes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UnitsAndModes.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,6 +107,7 @@
 				303DB97D2335349C000B7EE4 /* Assets.xcassets */,
 				303A5075233535E90044665A /* DecimalMinusTextField.swift */,
 				303DB97F2335349C000B7EE4 /* LaunchScreen.storyboard */,
+				308C981223392A2B00E88E17 /* UnitsAndModes.swift */,
 				303DB9822335349C000B7EE4 /* Info.plist */,
 			);
 			path = "Conversion-Calculator";
@@ -259,6 +262,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				308C981323392A2B00E88E17 /* UnitsAndModes.swift in Sources */,
 				303A5076233535E90044665A /* DecimalMinusTextField.swift in Sources */,
 				303DB9792335349B000B7EE4 /* ViewController.swift in Sources */,
 				303DB9772335349B000B7EE4 /* AppDelegate.swift in Sources */,

@@ -16,11 +16,12 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action:  #selector(UIInputViewController.dismissKeyboard))
-        view.addGestureRecognizer(tap)
         
         self.fromInput.clearsOnBeginEditing = true
         self.toInput.clearsOnBeginEditing = true
+        
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action:  #selector(UIInputViewController.dismissKeyboard))
+        view.addGestureRecognizer(tap)
     }
     
     @objc func dismissKeyboard() {
