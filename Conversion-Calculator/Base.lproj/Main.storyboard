@@ -112,9 +112,7 @@
         <!--Navigation Controller-->
         <scene sceneID="juN-D5-Uop">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="40g-zo-qbI" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <navigationController id="xip-Xj-qnM" sceneMemberID="viewController">
-                    <navigationItem key="navigationItem" id="Pb7-5h-Hde"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="lgt-cO-B3f">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -123,13 +121,13 @@
                         <segue destination="Nuk-EF-bQA" kind="relationship" relationship="rootViewController" id="AeK-ef-MgI"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="40g-zo-qbI" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="906" y="92"/>
         </scene>
         <!--Settings-->
         <scene sceneID="Qti-JH-tR8">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="lhl-oS-NEO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <viewController id="Nuk-EF-bQA" customClass="SettingsViewController" customModule="Conversion_Calculator" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="nnw-ON-3mg">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
@@ -172,22 +170,15 @@
                         <viewLayoutGuide key="safeArea" id="k8c-74-S7R"/>
                     </view>
                     <navigationItem key="navigationItem" title="Settings" id="bh7-5g-h5h">
-                        <barButtonItem key="leftBarButtonItem" style="plain" id="Beq-TG-c16">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="MSj-SJ-uah">
-                                <rect key="frame" x="20" y="13" width="92" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Cancel"/>
-                            </button>
+                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="URY-tW-kGZ">
                             <connections>
-                                <action selector="cancelBtn:" destination="Nuk-EF-bQA" id="P4N-ni-oN7"/>
+                                <segue destination="sjj-Qa-1Vl" kind="unwind" unwindAction="cancelWithSegue:" id="VgR-Wi-uT1"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" style="plain" id="JBQ-fA-Dji">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Poo-GD-Gls">
-                                <rect key="frame" x="302" y="13" width="92" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Save"/>
-                            </button>
+                        <barButtonItem key="rightBarButtonItem" title="Save" id="DMC-0D-MwY">
+                            <connections>
+                                <segue destination="sjj-Qa-1Vl" kind="unwind" unwindAction="saveWithSegue:" id="gHr-El-6cG"/>
+                            </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
@@ -196,6 +187,8 @@
                         <outlet property="unitPicker" destination="voH-yh-8EU" id="naa-dd-h4D"/>
                     </connections>
                 </viewController>
+                <exit id="sjj-Qa-1Vl" userLabel="Exit" sceneMemberID="exit"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="lhl-oS-NEO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1728.985507246377" y="90.401785714285708"/>
         </scene>

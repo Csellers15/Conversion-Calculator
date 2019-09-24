@@ -29,9 +29,9 @@ class SettingsViewController: UIViewController {
     
     var fromLength: LengthUnit?
     var toLength: LengthUnit?
-    
     var fromVol: VolumeUnit?
     var toVol: VolumeUnit?
+
     
     
     override func viewDidLoad() {
@@ -62,6 +62,7 @@ class SettingsViewController: UIViewController {
         let fromTap = UITapGestureRecognizer(target: self, action: #selector(fromPicker))
         let toTap = UITapGestureRecognizer(target: self, action: #selector(toPicker))
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action:  #selector(dismissPicker))
+        
         view.addGestureRecognizer(tap)
         fromLabel.addGestureRecognizer(fromTap)
         toLabel.addGestureRecognizer(toTap)
@@ -78,19 +79,31 @@ class SettingsViewController: UIViewController {
         self.toFromChoice = ""
     }
     
-    @IBAction func cancelBtn(_ sender: Any) {
+    
+    override func viewWillDisappear(_ animated: Bool){
+        super.viewWillDisappear(animated)
+        self.unitPicker.isHidden = true
         
+        if let data = self.delegate{
+            if mode == .Length{
+                data.settingsChanged(fromUnits: LengthUnit(rawValue: fromLabel.text!)!, toUnits: LengthUnit(rawValue: toLabel.text!)!)
+            }
+            else{
+                 data.settingsChanged(fromUnits: VolumeUnit(rawValue: fromLabel.text!)!, toUnits: VolumeUnit(rawValue: toLabel.text!)!)
+            }
+        }
     }
+
     
     @objc private func fromPicker(){
         self.unitPicker.isHidden = false
-        becomeFirstResponder()
+        self.becomeFirstResponder()
         self.toFromChoice = "from"
     }
     
     @objc private func toPicker(){
         self.unitPicker.isHidden = false
-        becomeFirstResponder()
+        self.becomeFirstResponder()
         self.toFromChoice = "to"
     }
     

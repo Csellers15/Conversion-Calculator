@@ -25,6 +25,8 @@ class ViewController: UIViewController, SettingsViewControllerDelegate {
     
     var mode = CalculatorMode.Length
     
+    var cancel: Bool = false
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -47,15 +49,31 @@ class ViewController: UIViewController, SettingsViewControllerDelegate {
                 let convKey = LengthConversionKey(toUnits: toLength, fromUnits: fromLength)
                 let toVal = fromVal! * lengthConversionTable[convKey]!
                 self.toInput.text = String(toVal)
-            } else {
+            } else if(self.toInput.text != ""){
                 let toVal = Double(self.toInput.text!)
                 let convKey = LengthConversionKey(toUnits: fromLength, fromUnits: toLength)
                 let fromVal = toVal! * lengthConversionTable[convKey]!
                 self.fromInput.text = String(fromVal)
+            } else {
+                self.fromInput.text = String(0)
+                self.toInput.text = String(0)
             }
         } else {
-            if (self.fromInput.text != ""){ }
-            else {}
+            if (self.fromInput.text != ""){
+                let fromVal = Double(self.fromInput.text!)
+                let convKey = VolumeConversionKey(toUnits: toVol, fromUnits: fromVol)
+                let toVal = fromVal! *
+                    volumeConversionTable[convKey]!
+                self.toInput.text = String(toVal)
+            } else if(self.toInput.text != "") {
+                let toVal = Double(self.toInput.text!)
+                let convKey = VolumeConversionKey(toUnits: fromVol, fromUnits: toVol)
+                let fromVal = toVal! * volumeConversionTable[convKey]!
+                self.fromInput.text = String(fromVal)
+            } else {
+                self.fromInput.text = String(0)
+                self.toInput.text = String(0)
+            }
         }
     }
     
@@ -74,44 +92,59 @@ class ViewController: UIViewController, SettingsViewControllerDelegate {
     
     @IBAction func modeChange(_ sender: Any) {
         if (mode == .Length){
-              self.fromLabel.text! = "\(VolumeUnit.Gallons.rawValue)"
-              self.toLabel.text! = "\(VolumeUnit.Liters)"
+              self.fromLabel.text! = "\(self.fromVol)"
+              self.toLabel.text! = "\(self.toVol)"
+              fromInput.placeholder = "Enter a Volume in \(self.fromVol)"
+              toInput.placeholder = "Enter a Volume in \(self.toVol)"
               mode = CalculatorMode.Volume
           } else{
-              self.fromLabel.text! = "\(LengthUnit.Yards)"
-              self.toLabel.text! = "\(LengthUnit.Meters)"
-              mode = CalculatorMode.Length
+            self.fromLabel.text! = "\(self.fromLength)"
+            self.toLabel.text! = "\(self.toLength)"
+            fromInput.placeholder = "Enter a Volume in \(self.fromLength)"
+            toInput.placeholder = "Enter a Volume in \(self.toLength)"
+            mode = CalculatorMode.Length
           }
     }
     
     func settingsChanged(fromUnits: LengthUnit, toUnits: LengthUnit) {
-        self.toLength = toUnits
-        self.fromLength = fromUnits
-        fromInput.placeholder = "Enter a length in \(self.fromLength)"
-        toInput.placeholder = "Enter a length in \(self.toLength)"
-        fromLabel.text = "\(self.fromLength)"
-        toLabel.text = "\(self.toLength)"
+        if(cancel == false){
+                self.toLength = toUnits
+                self.fromLength = fromUnits
+                fromInput.placeholder = "Enter a length in \(self.fromLength)"
+                toInput.placeholder = "Enter a length in \(self.toLength)"
+                fromLabel.text = "\(self.fromLength)"
+                toLabel.text = "\(self.toLength)"
+            }
     }
     
+    
     func settingsChanged(fromUnits: VolumeUnit, toUnits: VolumeUnit) {
-        self.toVol = toUnits
-        self.fromVol = fromUnits
-        fromInput.placeholder = "Enter a length in \(self.fromVol)"
-        toInput.placeholder = "Enter a length in \(self.toVol)"
-        fromLabel.text = "\(self.fromVol)"
-        toLabel.text = "\(self.toVol)"
+        if(cancel == false){
+            self.toVol = toUnits
+            self.fromVol = fromUnits
+            fromInput.placeholder = "Enter a Volume in \(self.fromVol)"
+            toInput.placeholder = "Enter a Volume in \(self.toVol)"
+            fromLabel.text = "\(self.fromVol)"
+            toLabel.text = "\(self.toVol)"
+        }
+    }
+    
+    @IBAction func cancel(segue: UIStoryboardSegue) {
+        cancel = true
+    }
+    
+    @IBAction func save(segue: UIStoryboardSegue) {
+        cancel = false
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let dest = segue.destination as? UINavigationController{
-            if let settings = dest.viewControllers[0] as? SettingsViewController{
-                settings.delegate = self
-                settings.mode = self.mode
-                settings.fromLength = self.fromLength
-                settings.toLength = self.toLength
-                settings.fromVol = self.fromVol
-                settings.toVol = self.toVol
-            }
+        if let settings = segue.destination.children[0] as? SettingsViewController{
+            settings.delegate = self
+            settings.mode = self.mode
+            settings.fromLength = self.fromLength
+            settings.toLength = self.toLength
+            settings.fromVol = self.fromVol
+            settings.toVol = self.toVol
         }
     }
 }
