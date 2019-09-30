@@ -17,6 +17,10 @@
 		303DB9972335349D000B7EE4 /* Conversion_CalculatorUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 303DB9962335349D000B7EE4 /* Conversion_CalculatorUITests.swift */; };
 		3064D231233A95BA0007549F /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3064D230233A95BA0007549F /* SettingsViewController.swift */; };
 		308C981323392A2B00E88E17 /* UnitsAndModes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 308C981223392A2B00E88E17 /* UnitsAndModes.swift */; };
+		332D008D23429F1600118E05 /* LabelColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 332D008C23429F1600118E05 /* LabelColor.swift */; };
+		332D008F23429FD200118E05 /* ButtonColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 332D008E23429FD200118E05 /* ButtonColor.swift */; };
+		332D00912342A0AD00118E05 /* TextFieldColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 332D00902342A0AD00118E05 /* TextFieldColor.swift */; };
+		332D00932342A1DC00118E05 /* ViewControllerColorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 332D00922342A1DC00118E05 /* ViewControllerColorViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +57,10 @@
 		303DB9982335349D000B7EE4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3064D230233A95BA0007549F /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		308C981223392A2B00E88E17 /* UnitsAndModes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UnitsAndModes.swift; sourceTree = "<group>"; };
+		332D008C23429F1600118E05 /* LabelColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelColor.swift; sourceTree = "<group>"; };
+		332D008E23429FD200118E05 /* ButtonColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonColor.swift; sourceTree = "<group>"; };
+		332D00902342A0AD00118E05 /* TextFieldColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldColor.swift; sourceTree = "<group>"; };
+		332D00922342A1DC00118E05 /* ViewControllerColorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerColorViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,6 +120,10 @@
 				303DB97F2335349C000B7EE4 /* LaunchScreen.storyboard */,
 				308C981223392A2B00E88E17 /* UnitsAndModes.swift */,
 				303DB9822335349C000B7EE4 /* Info.plist */,
+				332D008C23429F1600118E05 /* LabelColor.swift */,
+				332D008E23429FD200118E05 /* ButtonColor.swift */,
+				332D00902342A0AD00118E05 /* TextFieldColor.swift */,
+				332D00922342A1DC00118E05 /* ViewControllerColorViewController.swift */,
 			);
 			path = "Conversion-Calculator";
 			sourceTree = "<group>";
@@ -267,9 +279,13 @@
 			files = (
 				308C981323392A2B00E88E17 /* UnitsAndModes.swift in Sources */,
 				303A5076233535E90044665A /* DecimalMinusTextField.swift in Sources */,
+				332D00932342A1DC00118E05 /* ViewControllerColorViewController.swift in Sources */,
+				332D008D23429F1600118E05 /* LabelColor.swift in Sources */,
 				303DB9792335349B000B7EE4 /* ViewController.swift in Sources */,
 				3064D231233A95BA0007549F /* SettingsViewController.swift in Sources */,
 				303DB9772335349B000B7EE4 /* AppDelegate.swift in Sources */,
+				332D008F23429FD200118E05 /* ButtonColor.swift in Sources */,
+				332D00912342A0AD00118E05 /* TextFieldColor.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController, SettingsViewControllerDelegate {
+class ViewController: ViewControllerColorViewController, SettingsViewControllerDelegate {
     
 
     @IBOutlet weak var fromInput: DecimalMinusTextField!

@@ -14,7 +14,7 @@ protocol SettingsViewControllerDelegate {
 }
 
 
-class SettingsViewController: UIViewController {
+class SettingsViewController: ViewControllerColorViewController {
     
     @IBOutlet weak var fromLabel: UILabel!
     @IBOutlet weak var toLabel: UILabel!
@@ -66,6 +66,13 @@ class SettingsViewController: UIViewController {
         view.addGestureRecognizer(tap)
         fromLabel.addGestureRecognizer(fromTap)
         toLabel.addGestureRecognizer(toTap)
+        
+        //Status bar override
+        self.setNeedsStatusBarAppearanceUpdate()
+    }
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
     }
     
     @objc func dismissPicker() {
@@ -124,5 +131,11 @@ extension SettingsViewController: UIPickerViewDataSource, UIPickerViewDelegate{
 
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         self.choice = self.pickerData[row]
+    }
+}
+
+extension UINavigationController {
+    override open var preferredStatusBarStyle : UIStatusBarStyle {
+        return topViewController?.preferredStatusBarStyle ?? .default
     }
 }
