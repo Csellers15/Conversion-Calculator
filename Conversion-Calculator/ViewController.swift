@@ -27,6 +27,9 @@ class ViewController: ViewControllerColorViewController, SettingsViewControllerD
     
     var cancel: Bool = false
     
+    var entries : [Conversion] = []
+    
+    var date = Date()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,21 +46,31 @@ class ViewController: ViewControllerColorViewController, SettingsViewControllerD
     }
     
     @IBAction func calculate(_ sender: UIButton) {
+        // Length Calc
         if(self.mode == .Length){
             if (self.fromInput.text != ""){
                 let fromVal = Double(self.fromInput.text!)
                 let convKey = LengthConversionKey(toUnits: toLength, fromUnits: fromLength)
                 let toVal = fromVal! * lengthConversionTable[convKey]!
                 self.toInput.text = String(toVal)
+                
+                let entry = Conversion(fromVal: fromVal!, toVal: toVal, mode: self.mode,fromUnits: self.fromLength.rawValue, toUnits: self.toLength.rawValue, timestamp: date)
+                entries.append(entry)
+                
             } else if(self.toInput.text != ""){
                 let toVal = Double(self.toInput.text!)
                 let convKey = LengthConversionKey(toUnits: fromLength, fromUnits: toLength)
                 let fromVal = toVal! * lengthConversionTable[convKey]!
                 self.fromInput.text = String(fromVal)
+                
+                let entry = Conversion(fromVal: fromVal, toVal: toVal!, mode: self.mode,fromUnits: self.fromLength.rawValue, toUnits: self.toLength.rawValue, timestamp: date)
+                entries.append(entry)
+                
             } else {
                 self.fromInput.text = String(0)
                 self.toInput.text = String(0)
             }
+        // Volume Calc
         } else {
             if (self.fromInput.text != ""){
                 let fromVal = Double(self.fromInput.text!)
@@ -65,11 +78,19 @@ class ViewController: ViewControllerColorViewController, SettingsViewControllerD
                 let toVal = fromVal! *
                     volumeConversionTable[convKey]!
                 self.toInput.text = String(toVal)
+                
+                let entry = Conversion(fromVal: fromVal!, toVal: toVal, mode: self.mode,fromUnits: self.fromLength.rawValue, toUnits: self.toLength.rawValue, timestamp: date)
+                entries.append(entry)
+                
             } else if(self.toInput.text != "") {
                 let toVal = Double(self.toInput.text!)
                 let convKey = VolumeConversionKey(toUnits: fromVol, fromUnits: toVol)
                 let fromVal = toVal! * volumeConversionTable[convKey]!
                 self.fromInput.text = String(fromVal)
+                
+                let entry = Conversion(fromVal: fromVal, toVal: toVal!, mode: self.mode,fromUnits: self.fromLength.rawValue, toUnits: self.toLength.rawValue, timestamp: date)
+                entries.append(entry)
+                
             } else {
                 self.fromInput.text = String(0)
                 self.toInput.text = String(0)

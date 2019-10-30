@@ -21,6 +21,8 @@
 		332D008F23429FD200118E05 /* ButtonColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 332D008E23429FD200118E05 /* ButtonColor.swift */; };
 		332D00912342A0AD00118E05 /* TextFieldColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 332D00902342A0AD00118E05 /* TextFieldColor.swift */; };
 		332D00932342A1DC00118E05 /* ViewControllerColorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 332D00922342A1DC00118E05 /* ViewControllerColorViewController.swift */; };
+		33E6106A236758E400D287DD /* Conversion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33E61069236758E400D287DD /* Conversion.swift */; };
+		33E6106E236760EF00D287DD /* HistoryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33E6106D236760EF00D287DD /* HistoryTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,6 +63,8 @@
 		332D008E23429FD200118E05 /* ButtonColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonColor.swift; sourceTree = "<group>"; };
 		332D00902342A0AD00118E05 /* TextFieldColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldColor.swift; sourceTree = "<group>"; };
 		332D00922342A1DC00118E05 /* ViewControllerColorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerColorViewController.swift; sourceTree = "<group>"; };
+		33E61069236758E400D287DD /* Conversion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Conversion.swift; sourceTree = "<group>"; };
+		33E6106D236760EF00D287DD /* HistoryTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -124,6 +128,8 @@
 				332D008E23429FD200118E05 /* ButtonColor.swift */,
 				332D00902342A0AD00118E05 /* TextFieldColor.swift */,
 				332D00922342A1DC00118E05 /* ViewControllerColorViewController.swift */,
+				33E61069236758E400D287DD /* Conversion.swift */,
+				33E6106D236760EF00D287DD /* HistoryTableViewController.swift */,
 			);
 			path = "Conversion-Calculator";
 			sourceTree = "<group>";
@@ -278,12 +284,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				308C981323392A2B00E88E17 /* UnitsAndModes.swift in Sources */,
+				33E6106A236758E400D287DD /* Conversion.swift in Sources */,
 				303A5076233535E90044665A /* DecimalMinusTextField.swift in Sources */,
 				332D00932342A1DC00118E05 /* ViewControllerColorViewController.swift in Sources */,
 				332D008D23429F1600118E05 /* LabelColor.swift in Sources */,
 				303DB9792335349B000B7EE4 /* ViewController.swift in Sources */,
 				3064D231233A95BA0007549F /* SettingsViewController.swift in Sources */,
 				303DB9772335349B000B7EE4 /* AppDelegate.swift in Sources */,
+				33E6106E236760EF00D287DD /* HistoryTableViewController.swift in Sources */,
 				332D008F23429FD200118E05 /* ButtonColor.swift in Sources */,
 				332D00912342A0AD00118E05 /* TextFieldColor.swift in Sources */,
 			);
