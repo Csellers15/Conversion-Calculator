@@ -167,5 +167,8 @@ class ViewController: ViewControllerColorViewController, SettingsViewControllerD
             settings.fromVol = self.fromVol
             settings.toVol = self.toVol
         }
+        if let history = segue.destination.children[0] as? HistoryTableViewController{
+            history.entries = self.entries
+        }
     }
 }

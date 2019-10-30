@@ -142,10 +142,10 @@
             </objects>
             <point key="canvasLocation" x="1047.8260869565217" y="91.741071428571431"/>
         </scene>
-        <!--Table View Controller-->
+        <!--History Table View Controller-->
         <scene sceneID="Igd-r9-Bpn">
             <objects>
-                <tableViewController id="zyC-wU-avU" sceneMemberID="viewController">
+                <tableViewController id="zyC-wU-avU" customClass="HistoryTableViewController" customModule="Conversion_Calculator" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="nXj-VD-jSO">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
