@@ -8,8 +8,7 @@
 
 import UIKit
 
-class ViewController: ViewControllerColorViewController, SettingsViewControllerDelegate {
-    
+class ViewController: ViewControllerColorViewController, SettingsViewControllerDelegate, HistoryTableViewControllerDelegate {
 
     @IBOutlet weak var fromInput: DecimalMinusTextField!
     @IBOutlet weak var toInput: DecimalMinusTextField!
@@ -24,18 +23,15 @@ class ViewController: ViewControllerColorViewController, SettingsViewControllerD
     var toVol = VolumeUnit.Gallons
     
     var mode = CalculatorMode.Length
-    
     var cancel: Bool = false
-    
     var entries : [Conversion] = []
-    
-    var date = Date()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.fromInput.clearsOnBeginEditing = true
         self.toInput.clearsOnBeginEditing = true
+        
         
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action:  #selector(UIInputViewController.dismissKeyboard))
         view.addGestureRecognizer(tap)
@@ -54,7 +50,7 @@ class ViewController: ViewControllerColorViewController, SettingsViewControllerD
                 let toVal = fromVal! * lengthConversionTable[convKey]!
                 self.toInput.text = String(toVal)
                 
-                let entry = Conversion(fromVal: fromVal!, toVal: toVal, mode: self.mode,fromUnits: self.fromLength.rawValue, toUnits: self.toLength.rawValue, timestamp: date)
+                let entry = Conversion(fromVal: fromVal!, toVal: toVal, mode: self.mode,fromUnits: self.fromLength.rawValue, toUnits: self.toLength.rawValue, timestamp: Date())
                 entries.append(entry)
                 
             } else if(self.toInput.text != ""){
@@ -63,7 +59,7 @@ class ViewController: ViewControllerColorViewController, SettingsViewControllerD
                 let fromVal = toVal! * lengthConversionTable[convKey]!
                 self.fromInput.text = String(fromVal)
                 
-                let entry = Conversion(fromVal: fromVal, toVal: toVal!, mode: self.mode,fromUnits: self.fromLength.rawValue, toUnits: self.toLength.rawValue, timestamp: date)
+                let entry = Conversion(fromVal: fromVal, toVal: toVal!, mode: self.mode,fromUnits: self.fromLength.rawValue, toUnits: self.toLength.rawValue, timestamp: Date())
                 entries.append(entry)
                 
             } else {
@@ -79,7 +75,7 @@ class ViewController: ViewControllerColorViewController, SettingsViewControllerD
                     volumeConversionTable[convKey]!
                 self.toInput.text = String(toVal)
                 
-                let entry = Conversion(fromVal: fromVal!, toVal: toVal, mode: self.mode,fromUnits: self.fromLength.rawValue, toUnits: self.toLength.rawValue, timestamp: date)
+                let entry = Conversion(fromVal: fromVal!, toVal: toVal, mode: self.mode,fromUnits: self.fromLength.rawValue, toUnits: self.toLength.rawValue, timestamp: Date())
                 entries.append(entry)
                 
             } else if(self.toInput.text != "") {
@@ -88,7 +84,7 @@ class ViewController: ViewControllerColorViewController, SettingsViewControllerD
                 let fromVal = toVal! * volumeConversionTable[convKey]!
                 self.fromInput.text = String(fromVal)
                 
-                let entry = Conversion(fromVal: fromVal, toVal: toVal!, mode: self.mode,fromUnits: self.fromLength.rawValue, toUnits: self.toLength.rawValue, timestamp: date)
+                let entry = Conversion(fromVal: fromVal, toVal: toVal!, mode: self.mode,fromUnits: self.fromLength.rawValue, toUnits: self.toLength.rawValue, timestamp: Date())
                 entries.append(entry)
                 
             } else {
@@ -159,16 +155,32 @@ class ViewController: ViewControllerColorViewController, SettingsViewControllerD
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let settings = segue.destination.children[0] as? SettingsViewController{
-            settings.delegate = self
-            settings.mode = self.mode
-            settings.fromLength = self.fromLength
-            settings.toLength = self.toLength
-            settings.fromVol = self.fromVol
-            settings.toVol = self.toVol
+        if segue.identifier == "settingsSegue"{
+            clearBtn(sender as! UIBarButtonItem)
+            if let settings = segue.destination as? SettingsViewController{
+                    settings.delegate = self
+                    settings.mode = self.mode
+                    settings.fromLength = self.fromLength
+                    settings.toLength = self.toLength
+                    settings.fromVol = self.fromVol
+                    settings.toVol = self.toVol
+            }
         }
-        if let history = segue.destination.children[0] as? HistoryTableViewController{
-            history.entries = self.entries
+        if segue.identifier == "historySegue"{
+            clearBtn(sender as! UIBarButtonItem)
+            if let history = segue.destination as? HistoryTableViewController{
+                history.historyDelegate = self
+                history.entries = self.entries
+            }
         }
     }
+    
+    func selectEntry(entry: Conversion) {
+        self.fromLabel.text = entry.fromUnits
+        self.toLabel.text = entry.toUnits
+        self.fromInput.text = String(entry.fromVal)
+        self.toInput.text = String(entry.toVal)
+        self.mode = entry.mode
+    }
+
 }
