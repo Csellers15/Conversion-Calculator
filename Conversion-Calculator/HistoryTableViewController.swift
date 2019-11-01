@@ -75,7 +75,7 @@ class HistoryTableViewController: UITableViewController {
         if let entry = self.tableViewData?[indexPath.section].entries[indexPath.row] {
             cell.conversionLabel.text = "\(entry.fromVal) \(entry.fromUnits) = \(entry.toVal) \(entry.toUnits)"
             cell.timestampLabel.text = "\(entry.timestamp.description)"
-            cell.thumbnail.image = UIImage(imageLiteralResourceName: entry.mode == .Length ? "length" : "volume")
+            cell.thumbnail.image = UIImage(imageLiteralResourceName: entry.mode == .Volume ? "volume" : "length")
         }
         return cell
     }

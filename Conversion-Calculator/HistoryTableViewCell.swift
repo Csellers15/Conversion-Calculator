@@ -13,6 +13,7 @@ class HistoryTableViewCell: UITableViewCell {
     
     @IBOutlet weak var conversionLabel: UILabel!
     @IBOutlet weak var timestampLabel: UILabel!
+    
     @IBOutlet weak var thumbnail: UIImageView!
     
     

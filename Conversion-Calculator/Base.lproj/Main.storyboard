@@ -180,12 +180,8 @@
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="80"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Yv6-DV-Ncx" userLabel="Thumbnail">
-                                            <rect key="frame" x="20" y="9" width="60" height="60"/>
-                                        </imageView>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Conversion Info Goes here" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r1Z-fC-GlD">
-                                            <rect key="frame" x="88" y="9" width="202" height="21"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Conversion Info Goes here" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r1Z-fC-GlD">
+                                            <rect key="frame" x="88" y="9" width="294" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
@@ -196,15 +192,29 @@
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="Yv6-DV-Ncx" userLabel="Thumbnail">
+                                            <rect key="frame" x="20" y="9" width="60" height="60"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        </imageView>
                                     </subviews>
                                     <constraints>
+                                        <constraint firstItem="7Dk-gN-Pug" firstAttribute="top" secondItem="7wI-e1-tOd" secondAttribute="top" constant="50.666666666666664" id="7sR-Aa-oxx"/>
+                                        <constraint firstItem="r1Z-fC-GlD" firstAttribute="leading" secondItem="7wI-e1-tOd" secondAttribute="leading" constant="88" id="CDT-Dm-Pwj"/>
+                                        <constraint firstItem="7Dk-gN-Pug" firstAttribute="leading" secondItem="7wI-e1-tOd" secondAttribute="leading" constant="218" id="FsY-0b-ifF"/>
+                                        <constraint firstAttribute="trailing" secondItem="Yv6-DV-Ncx" secondAttribute="trailing" constant="242" id="KHh-hl-rwL"/>
                                         <constraint firstAttribute="trailingMargin" secondItem="7Dk-gN-Pug" secondAttribute="trailing" constant="5" id="Q7U-ao-cdf"/>
+                                        <constraint firstItem="Yv6-DV-Ncx" firstAttribute="leading" secondItem="7wI-e1-tOd" secondAttribute="leading" constant="20" id="R1G-uP-kWN"/>
+                                        <constraint firstItem="r1Z-fC-GlD" firstAttribute="top" secondItem="7wI-e1-tOd" secondAttribute="top" constant="9" id="XWs-mp-aYt"/>
+                                        <constraint firstAttribute="trailing" secondItem="r1Z-fC-GlD" secondAttribute="trailing" constant="32" id="YMx-xU-hlw"/>
+                                        <constraint firstItem="Yv6-DV-Ncx" firstAttribute="top" secondItem="7wI-e1-tOd" secondAttribute="top" constant="9" id="ez7-vm-lcd"/>
+                                        <constraint firstAttribute="bottom" secondItem="r1Z-fC-GlD" secondAttribute="bottom" constant="50" id="fCm-G4-UQI"/>
+                                        <constraint firstAttribute="bottom" secondItem="Yv6-DV-Ncx" secondAttribute="bottom" constant="11" id="gn8-Ic-U0a"/>
                                         <constraint firstAttribute="bottom" secondItem="7Dk-gN-Pug" secondAttribute="bottom" constant="8.5" id="kJ1-Pk-27f"/>
-                                        <constraint firstItem="7Dk-gN-Pug" firstAttribute="leading" secondItem="Yv6-DV-Ncx" secondAttribute="trailing" constant="25" id="vEs-Gr-FTF"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="conversionLabel" destination="r1Z-fC-GlD" id="Mch-Qf-WeB"/>
+                                    <outlet property="thumbnail" destination="Yv6-DV-Ncx" id="TZf-2t-ypf"/>
                                     <outlet property="timestampLabel" destination="7Dk-gN-Pug" id="4RE-SO-IoX"/>
                                 </connections>
                             </tableViewCell>
