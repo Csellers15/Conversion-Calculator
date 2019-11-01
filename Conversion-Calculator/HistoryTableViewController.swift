@@ -16,6 +16,7 @@ class HistoryTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.sortIntoSections(entries: self.entries!)
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -23,6 +24,51 @@ class HistoryTableViewController: UITableViewController {
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
+    
+    var tableViewData: [(sectionHeader: String, entries: [Conversion])]? {
+           didSet {
+               DispatchQueue.main.async {
+                   self.tableView.reloadData()
+               }
+           }
+       }
+
+       func sortIntoSections(entries: [Conversion]) {
+           
+           var tmpEntries : Dictionary<String,[Conversion]> = [:]
+           var tmpData: [(sectionHeader: String, entries: [Conversion])] = []
+           
+           // partition into sections
+           for entry in entries {
+               let shortDate = entry.timestamp.short
+               if var bucket = tmpEntries[shortDate] {
+                   bucket.append(entry)
+                   tmpEntries[shortDate] = bucket
+               } else {
+                   tmpEntries[shortDate] = [entry]
+               }
+           }
+           
+           // breakout into our preferred array format
+           let keys = tmpEntries.keys
+           for key in keys {
+               if let val = tmpEntries[key] {
+                   tmpData.append((sectionHeader: key, entries: val))
+               }
+           }
+
+           // sort by increasing date.
+           tmpData.sort { (v1, v2) -> Bool in
+               if v1.sectionHeader < v2.sectionHeader {
+                   return true
+               } else {
+                   return false
+               }
+           }
+           
+           self.tableViewData = tmpData
+       }
+
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
            // use the historyDelegate to report back entry selected to the calculator scene

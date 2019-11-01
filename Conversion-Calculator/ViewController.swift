@@ -24,7 +24,12 @@ class ViewController: ViewControllerColorViewController, SettingsViewControllerD
     
     var mode = CalculatorMode.Length
     var cancel: Bool = false
-    var entries : [Conversion] = []
+     var entries : [Conversion] = [
+            Conversion(fromVal: 1, toVal: 1760, mode: .Length, fromUnits: LengthUnit.Miles.rawValue, toUnits:
+    LengthUnit.Yards.rawValue, timestamp: Date.distantPast),
+            Conversion(fromVal: 1, toVal: 4, mode: .Volume, fromUnits: VolumeUnit.Gallons.rawValue, toUnits:
+    VolumeUnit.Quarts.rawValue, timestamp: Date.distantFuture)]
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
