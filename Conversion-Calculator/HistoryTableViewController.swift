@@ -70,45 +70,100 @@ class HistoryTableViewController: UITableViewController {
        }
 
     
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-           // use the historyDelegate to report back entry selected to the calculator scene
-           if let del = self.historyDelegate {
-               let conv = entries![indexPath.row]
-               del.selectEntry(entry: conv)
-           }
-           
-           // this pops back to the main calculator
-           _ = self.navigationController?.popViewController(animated: true)
-       }
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "FancyCell", for: indexPath) as! HistoryTableViewCell
+        if let entry = self.tableViewData?[indexPath.section].entries[indexPath.row] {
+            cell.conversionLabel.text = "\(entry.fromVal) \(entry.fromUnits) = \(entry.toVal) \(entry.toUnits)"
+            cell.timestampLabel.text = "\(entry.timestamp.description)"
+            cell.thumbnail.image = UIImage(imageLiteralResourceName: entry.mode == .Length ? "length" : "volume")
+        }
+        return cell
+    }
+
 
 
     // MARK: - Table view data source
     override func numberOfSections(in tableView: UITableView) -> Int {
-        //your code goes here
-        return 1
-    }
-    
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if let entry = self.entries{
-            return entry.count
+        // #warning Incomplete implementation, return the number of sections
+        if let data = self.tableViewData {
+            return data.count
         } else {
-             return 0
+            return 0
         }
     }
-    
-    
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cellId", for: indexPath)
-        
-        if let entry = self.entries?[indexPath.row]{
-            cell.textLabel?.text = String(entry.toVal) + entry.toUnits + "=" + String(entry.fromVal) + entry.fromUnits
-            cell.detailTextLabel?.text = entry.mode.rawValue
+
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        // #warning Incomplete implementation, return the number of rows
+        if let sectionInfo = self.tableViewData?[section] {
+            return sectionInfo.entries.count
+        } else {
+            return 0
         }
-        
-        return cell
     }
+
+
+      // MARK: - UITableViewDelegate
+      override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) ->
+          String? {
+              return self.tableViewData?[section].sectionHeader
+      }
+    
+      override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) ->
+          CGFloat {
+              return 80.0
+      }
+
+     override func tableView(_ tableView: UITableView, willDisplayFooterView view: UIView, forSection
+          section: Int) {
+          let header = view as! UITableViewHeaderFooterView
+          header.textLabel?.textColor = THEME_COLOR3
+          header.contentView.backgroundColor = THEME_COLOR5
+      }
+      
+      
+      override func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView,
+                              forSection section: Int) {
+          let header = view as! UITableViewHeaderFooterView
+          header.textLabel?.textColor = THEME_COLOR3
+          header.contentView.backgroundColor = THEME_COLOR5
+      }
+
+      override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+          // use the historyDelegate to report back entry selected to the calculator scene
+          if let del = self.historyDelegate {
+              if let conv = self.tableViewData?[indexPath.section].entries[indexPath.row] {
+                  del.selectEntry(entry: conv)
+              }
+          }
+          
+          // this pops to the calculator
+          _ = self.navigationController?.popViewController(animated: true)
+      }
+
 }
 
 protocol HistoryTableViewControllerDelegate {
      func selectEntry(entry: Conversion)
  }
+
+extension Double {
+    /// Rounds the double to decimal places value
+    func roundTo(places:Int) -> Double {
+        let divisor = pow(10.0, Double(places))
+        return (self * divisor).rounded() / divisor
+    }
+}
+
+extension Date {
+    struct Formatter {
+        static let short: DateFormatter = {
+            let formatter = DateFormatter()
+            formatter.dateFormat = "yyyy-MM-dd"
+            return formatter
+        }()
+    }
+    
+    var short: String {
+        return Formatter.short.string(from: self)
+    }
+}
